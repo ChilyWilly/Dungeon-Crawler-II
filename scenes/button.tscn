@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://cxfgu886xdyc1"]
+
+[ext_resource type="Script" uid="uid://cbem6i3avl6wc" path="res://scripts/button.gd" id="1_rhj8v"]
+[ext_resource type="Texture2D" uid="uid://dbtjlvjxfu3uk" path="res://assets/Dungeon Gathering Full Ver. 1.1 With Monsters Expansion/TileSets/Set 1.5.png" id="2_rhj8v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3q610"]
+atlas = ExtResource("2_rhj8v")
+region = Rect2(304, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7y4x"]
+atlas = ExtResource("2_rhj8v")
+region = Rect2(320, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1bdt2"]
+atlas = ExtResource("2_rhj8v")
+region = Rect2(336, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8m7bo"]
+atlas = ExtResource("2_rhj8v")
+region = Rect2(304, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_djxyh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3q610")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i7y4x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1bdt2")
+}],
+"loop": 0,
+"name": &"pressed",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8m7bo")
+}],
+"loop": 0,
+"name": &"unpressed",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w5bra"]
+size = Vector2(12, 14)
+
+[node name="Button" type="Area2D" unique_id=1232845169]
+script = ExtResource("1_rhj8v")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=289008628]
+sprite_frames = SubResource("SpriteFrames_djxyh")
+animation = &"unpressed"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1235701586]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_w5bra")
+
+[node name="EventTimer" type="Timer" parent="." unique_id=428600720]
+wait_time = 0.3
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="EventTimer" to="." method="_on_event_timer_timeout"]

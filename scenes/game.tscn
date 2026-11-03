@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bxrccydowgqte"]
+
+[ext_resource type="PackedScene" uid="uid://dp4n1b5ca0qux" path="res://scenes/level_1.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://c8by3hpav0kiu" path="res://scenes/hud.tscn" id="2_yqjtg"]
+[ext_resource type="Script" uid="uid://bvx3gguhxd64n" path="res://scripts/game_manager.gd" id="3_lnu2h"]
+
+[node name="Game" type="Node2D" unique_id=926651615]
+
+[node name="Level1" parent="." unique_id=1818034152 instance=ExtResource("1_uwrxv")]
+
+[node name="HUD" parent="." unique_id=1578919809 instance=ExtResource("2_yqjtg")]
+
+[node name="GameManager" type="Node2D" parent="." unique_id=35985478]
+script = ExtResource("3_lnu2h")

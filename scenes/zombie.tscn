@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://b03v3uew472g0"]
+
+[ext_resource type="Script" uid="uid://exfkvitfqc4d" path="res://scripts/zombie.gd" id="1_httt1"]
+[ext_resource type="Texture2D" uid="uid://d23xoqrqpjocy" path="res://assets/Dungeon Gathering Full Ver. 1.1 With Monsters Expansion/DG Monsters Expansion/Zombies Pack/Green Zombie/1Zombie-Idle.png" id="2_httt1"]
+[ext_resource type="Texture2D" uid="uid://cdigqhcyd3a30" path="res://assets/Dungeon Gathering Full Ver. 1.1 With Monsters Expansion/DG Monsters Expansion/Zombies Pack/Shadow.png" id="2_xepks"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xepks"]
+atlas = ExtResource("2_httt1")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4gx57"]
+atlas = ExtResource("2_httt1")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycv6i"]
+atlas = ExtResource("2_httt1")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjjxt"]
+atlas = ExtResource("2_httt1")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7pfmu"]
+atlas = ExtResource("2_httt1")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3fthk"]
+atlas = ExtResource("2_httt1")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aetfh"]
+atlas = ExtResource("2_httt1")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjlcg"]
+atlas = ExtResource("2_httt1")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w5bra"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xepks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4gx57")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycv6i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pjjxt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7pfmu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3fthk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aetfh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjlcg")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w5bra"]
+radius = 4.1231055
+
+[node name="Zombie" type="Area2D" unique_id=1730231784]
+script = ExtResource("1_httt1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=992431280]
+texture = ExtResource("2_xepks")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=971203207]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_w5bra")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=814934122]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_w5bra")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

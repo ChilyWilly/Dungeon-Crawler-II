@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://c8by3hpav0kiu"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_toqtt"]
+load_path = "res://.godot/imported/Hearts Blue.png-013d8b2ad2bbc1eb60d9ea23dc68a783.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oo0fn"]
+atlas = SubResource("CompressedTexture2D_toqtt")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w5bra"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oo0fn")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="HUD" type="CanvasLayer" unique_id=1578919809]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=852855449]
+position = Vector2(40, 40)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_w5bra")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=1411010707]
+position = Vector2(72, 40)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_w5bra")
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="." unique_id=1655307879]
+position = Vector2(104, 40)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_w5bra")

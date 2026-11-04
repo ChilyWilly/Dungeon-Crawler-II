@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b03v3uew472g0"]
 
-[ext_resource type="Script" uid="uid://exfkvitfqc4d" path="res://scripts/zombie.gd" id="1_httt1"]
+[ext_resource type="PackedScene" uid="uid://bqynobx8uaafs" path="res://scenes/damage_zone.tscn" id="1_xepks"]
 [ext_resource type="Texture2D" uid="uid://d23xoqrqpjocy" path="res://assets/Dungeon Gathering Full Ver. 1.1 With Monsters Expansion/DG Monsters Expansion/Zombies Pack/Green Zombie/1Zombie-Idle.png" id="2_httt1"]
 [ext_resource type="Texture2D" uid="uid://cdigqhcyd3a30" path="res://assets/Dungeon Gathering Full Ver. 1.1 With Monsters Expansion/DG Monsters Expansion/Zombies Pack/Shadow.png" id="2_xepks"]
 
@@ -36,7 +36,7 @@ region = Rect2(192, 0, 32, 32)
 atlas = ExtResource("2_httt1")
 region = Rect2(224, 0, 32, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_w5bra"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_xepks"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -68,23 +68,20 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_w5bra"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_4gx57"]
 radius = 4.1231055
 
-[node name="Zombie" type="Area2D" unique_id=1730231784]
-script = ExtResource("1_httt1")
+[node name="Zombie" unique_id=870672627 instance=ExtResource("1_xepks")]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=992431280]
+[node name="Sprite2D" type="Sprite2D" parent="." index="0" unique_id=120441298]
 texture = ExtResource("2_xepks")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=971203207]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1" unique_id=704666681]
 position = Vector2(0, -8)
-sprite_frames = SubResource("SpriteFrames_w5bra")
+sprite_frames = SubResource("SpriteFrames_xepks")
 animation = &"idle"
 autoplay = "idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=814934122]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2" unique_id=1410213289]
 position = Vector2(0, -4)
-shape = SubResource("CircleShape2D_w5bra")
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+shape = SubResource("CircleShape2D_4gx57")

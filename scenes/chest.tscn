@@ -1,0 +1,151 @@
+[gd_scene format=3 uid="uid://63a0adr6q44q"]
+
+[ext_resource type="Texture2D" uid="uid://doso6473toxq0" path="res://assets/Dungeon Gathering Full Ver. 1.1 With Monsters Expansion/Chests/All Chest Sheet.png" id="1_oii8l"]
+[ext_resource type="Script" uid="uid://ggpjknn4nfgt" path="res://scripts/chest.gd" id="1_sy5e1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sy5e1"]
+atlas = ExtResource("1_oii8l")
+region = Rect2(0, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqd3d"]
+atlas = ExtResource("1_oii8l")
+region = Rect2(16, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yue2o"]
+atlas = ExtResource("1_oii8l")
+region = Rect2(32, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhylo"]
+atlas = ExtResource("1_oii8l")
+region = Rect2(48, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w02o5"]
+atlas = ExtResource("1_oii8l")
+region = Rect2(64, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilhio"]
+atlas = ExtResource("1_oii8l")
+region = Rect2(80, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kg5gm"]
+atlas = ExtResource("1_oii8l")
+region = Rect2(96, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8me8i"]
+atlas = ExtResource("1_oii8l")
+region = Rect2(112, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oii8l"]
+atlas = ExtResource("1_oii8l")
+region = Rect2(0, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfymr"]
+atlas = ExtResource("1_oii8l")
+region = Rect2(16, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udamv"]
+atlas = ExtResource("1_oii8l")
+region = Rect2(32, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_up8i7"]
+atlas = ExtResource("1_oii8l")
+region = Rect2(48, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nnvde"]
+atlas = ExtResource("1_oii8l")
+region = Rect2(64, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sj8sc"]
+atlas = ExtResource("1_oii8l")
+region = Rect2(80, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_euan8"]
+atlas = ExtResource("1_oii8l")
+region = Rect2(96, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5oag"]
+atlas = ExtResource("1_oii8l")
+region = Rect2(112, 96, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w5bra"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sy5e1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqd3d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yue2o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yhylo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w02o5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ilhio")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kg5gm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8me8i")
+}],
+"loop": 1,
+"name": &"closed",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oii8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfymr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udamv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_up8i7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nnvde")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sj8sc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_euan8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5oag")
+}],
+"loop": 0,
+"name": &"open",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w5bra"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_djxyh"]
+size = Vector2(14, 13)
+
+[node name="Chest" type="Area2D" unique_id=677938062]
+script = ExtResource("1_sy5e1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1919553521]
+sprite_frames = SubResource("SpriteFrames_w5bra")
+animation = &"open"
+autoplay = "closed"
+
+[node name="OpenCollision" type="CollisionShape2D" parent="." unique_id=240552753]
+shape = SubResource("RectangleShape2D_w5bra")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=98081065]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1925416674]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_djxyh")

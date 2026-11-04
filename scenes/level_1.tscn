@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://b21hd447acsvh" path="res://scenes/coin.tscn" id="6_fcfvj"]
 [ext_resource type="Texture2D" uid="uid://b1of2bcnn1ukr" path="res://assets/Dungeon Gathering Full Ver. 1.1 With Monsters Expansion/TileSets/Set 4.4.png" id="8_6dial"]
 [ext_resource type="Texture2D" uid="uid://d0rbcvnhim5hv" path="res://assets/Dungeon Gathering Full Ver. 1.1 With Monsters Expansion/TileSets/Set 4.3.png" id="9_7nomh"]
+[ext_resource type="PackedScene" uid="uid://63a0adr6q44q" path="res://scenes/chest.tscn" id="15_6dial"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1s4pk"]
 texture = ExtResource("1_2os1m")
@@ -1792,6 +1793,40 @@ func _on_door_open():
 	door_collision.set_deferred(\"disabled\", true)
 "
 
+[sub_resource type="GDScript" id="GDScript_w5bra"]
+resource_name = "Give Player: Key"
+script/source = "extends Node
+
+
+@onready var chest: Area2D = $\"..\"
+
+
+func _ready():
+	chest.chest_opened.connect(_on_chest_opened)
+	
+	
+func _on_chest_opened():
+	GameManager.money += 100
+	print(GameManager.money)
+"
+
+[sub_resource type="GDScript" id="GDScript_djxyh"]
+resource_name = "Give Player: Money"
+script/source = "extends Node
+
+
+@onready var chest_2: Area2D = $\"..\"
+
+
+func _ready():
+	chest_2.chest_opened.connect(_on_chest_opened)
+	
+	
+func _on_chest_opened():
+	GameManager.money += 200
+	print(GameManager.money)
+"
+
 [node name="Level1" type="Node2D" unique_id=1818034152]
 
 [node name="TileMap" type="TileMap" parent="." unique_id=1702162553]
@@ -1822,12 +1857,24 @@ position = Vector2(112, 64)
 [node name="Coin" parent="." unique_id=992692357 instance=ExtResource("6_fcfvj")]
 position = Vector2(89, 7)
 
-[node name="Zombie" parent="." unique_id=1730231784 instance=ExtResource("4_5xbjy")]
-position = Vector2(7, -39)
+[node name="Zombie" parent="." unique_id=870672627 instance=ExtResource("4_5xbjy")]
+position = Vector2(6, -40)
 
-[node name="BigZombie" parent="." unique_id=1762051540 instance=ExtResource("4_5xbjy")]
-position = Vector2(24, -142)
+[node name="BigZombie" parent="." unique_id=960427787 instance=ExtResource("4_5xbjy")]
+position = Vector2(24, -115)
 scale = Vector2(3, 3)
+
+[node name="Chest" parent="." unique_id=677938062 instance=ExtResource("15_6dial")]
+position = Vector2(-72, -30)
+
+[node name="HelperScript" type="Node" parent="Chest" unique_id=1857338427]
+script = SubResource("GDScript_w5bra")
+
+[node name="Chest2" parent="." unique_id=1089591990 instance=ExtResource("15_6dial")]
+position = Vector2(72, -46)
+
+[node name="HelperScript" type="Node" parent="Chest2" unique_id=485645483]
+script = SubResource("GDScript_djxyh")
 
 [node name="Player" parent="." unique_id=1858535980 instance=ExtResource("3_4nkto")]
 position = Vector2(12, 20)
@@ -1835,3 +1882,5 @@ position = Vector2(12, 20)
 [node name="Camera2D2" type="Camera2D" parent="Player" unique_id=1736391971]
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
+
+[connection signal="body_entered" from="Chest" to="Chest" method="_on_body_entered"]

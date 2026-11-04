@@ -1,72 +1,93 @@
 extends CharacterBody2D
 
 
-const SPEED = 120.0
+var SPEED = 120.0
 
-var direction_x = 0.0
-var direction_y = 0.0
+var last_direction: Vector2 = Vector2.DOWN
 var attack = false
+var attack_cooldown = false
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var attack_timeout: Timer = $AttackTimeout
 
 
 func _ready():
 	animated_sprite.animation_finished.connect(_on_animation_finished)
-	
+
 
 func _on_animation_finished():
 	if animated_sprite.animation.begins_with("atk"):
 		attack = false
+		SPEED = 120.0
+	elif animated_sprite.animation.begins_with("charge"):
+		attack_cooldown = true
+		attack = false
+		SPEED = 120.0
+		attack_timeout.start()
 
 
 func _physics_process(delta: float) -> void:
 	
 	movement()
-	animations()
 	move_and_slide()
 
 
-func movement():
-	# Get the input direction and handle the movement/deceleration.
-	direction_x = Input.get_axis("left", "right")
-	direction_y = Input.get_axis("up", "down")
-		
-	var direction = Vector2(direction_x, direction_y).normalized()
+func movement() -> void:
+	# Get the input direction	
+	var direction := Input.get_vector("left", "right", "up", "down")
 	
 	if direction != Vector2.ZERO:
 		velocity = direction * SPEED
+		last_direction = direction
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.y = move_toward(velocity.y, 0, SPEED)
+		velocity = Vector2.ZERO
+	
+	process_animations(last_direction)
 
 
-func animations():
+func process_animations(direction) -> void:
+	
+	if velocity != Vector2.ZERO:
+		animations("run", direction)
+	else:
+		animations("idle", direction)
+
+
+func animations(prefix: String, dir: Vector2) -> void:
 	# Play idle and movement animations
 	if not attack:
-		if direction_x == 0 and direction_y == 0:
-			animated_sprite.play("idle")
-		elif direction_y >= 0 and direction_x == 0:
-			animated_sprite.play("run_down")
-		elif direction_y <= 0 and direction_x ==0:
-			animated_sprite.play("run_up")
-		else:
-			animated_sprite.play("run_side")
 		
-	# Flips the sprite
-	if direction_x > 0:
-		animated_sprite.flip_h = false
-	if direction_x < 0:
-		animated_sprite.flip_h = true
+		if dir.x != 0:
+			animated_sprite.flip_h = dir.x < 0
+			animated_sprite.play(prefix +"_side")
+		elif dir.y > 0:
+			animated_sprite.play(prefix + "_down")
+		elif dir.y < 0:
+			animated_sprite.play(prefix + "_up")
 		
 	# Play basic attacking animations
 	if Input.is_action_just_pressed("attack") and not attack:
+		SPEED = 20
 		attack = true
 		
-		if direction_x == 0 and direction_y == 0:
-			animated_sprite.play("atk_down")
-		elif direction_y >= 0 and direction_x == 0:
-			animated_sprite.play("atk_down")
-		elif direction_y <= 0 and direction_x ==0:
-			animated_sprite.play("atk_up")
-		else:
+		if dir.x != 0:
 			animated_sprite.play("atk_side")
+		elif dir.y > 0:
+			animated_sprite.play("atk_down")
+		elif dir.y < 0:
+			animated_sprite.play("atk_up")
+			
+	if Input.is_action_pressed("attack") and not attack and not attack_cooldown:
+		SPEED = 20
+		attack = true
+		
+		if dir.x != 0:
+			animated_sprite.play("charge_side")
+		elif dir.y > 0:
+			animated_sprite.play("charge_down")
+		elif dir.y < 0:
+			animated_sprite.play("charge_up")
+
+
+func _on_attack_timeout_timeout() -> void:
+	attack_cooldown = false

@@ -6,11 +6,12 @@ extends Area2D
 
 signal chest_opened
 
-func _process(delta: float) -> void:
+
+func _process(_delta: float) -> void:
 	var bodies = get_overlapping_bodies()
 	
 	for body in bodies:
-		if body is CharacterBody2D:
+		if body is PlayerCharacter:
 			if Input.is_action_just_pressed("accept"):
 				animated_sprite.play("open")
 				open_collision.set_deferred("disabled", true)

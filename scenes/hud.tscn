@@ -1,36 +1,109 @@
 [gd_scene format=3 uid="uid://c8by3hpav0kiu"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_toqtt"]
-load_path = "res://.godot/imported/Hearts Blue.png-013d8b2ad2bbc1eb60d9ea23dc68a783.ctex"
+[ext_resource type="Texture2D" uid="uid://b5736mm6gyik8" path="res://assets/Dungeon Gathering Full Ver. 1.1 With Monsters Expansion/DU UI-HUD Free Ver_/Hearts Blue.png" id="1_ahhtf"]
+[ext_resource type="Script" uid="uid://b7ml22e5geahh" path="res://scripts/heart.gd" id="2_oo0fn"]
+[ext_resource type="Texture2D" uid="uid://b8qtcpfnyh26r" path="res://assets/Dungeon Gathering Full Ver. 1.1 With Monsters Expansion/DG Asha Character/Blue Asha portrait base.png" id="3_5ysmq"]
+[ext_resource type="FontFile" uid="uid://djo46bdjs60i0" path="res://assets/Dungeon Gathering Full Ver. 1.1 With Monsters Expansion/DU UI-HUD Free Ver_/BoldPixels.ttf" id="4_6fi6k"]
+[ext_resource type="Script" uid="uid://x1kha37th0vy" path="res://scripts/money.gd" id="5_uo2fv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahhtf"]
+atlas = ExtResource("1_ahhtf")
+region = Rect2(80, 64, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oo0fn"]
-atlas = SubResource("CompressedTexture2D_toqtt")
-region = Rect2(0, 0, 16, 16)
+atlas = ExtResource("1_ahhtf")
+region = Rect2(80, 0, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_w5bra"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ysmq"]
+atlas = ExtResource("1_ahhtf")
+region = Rect2(80, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6fi6k"]
+atlas = ExtResource("1_ahhtf")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uo2fv"]
+atlas = ExtResource("1_ahhtf")
+region = Rect2(80, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lxscs"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ahhtf")
+}],
+"loop": 0,
+"name": &"empty",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_oo0fn")
 }],
-"loop": 1,
-"name": &"default",
+"loop": 0,
+"name": &"full",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ysmq")
+}],
+"loop": 0,
+"name": &"half",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6fi6k")
+}],
+"loop": 0,
+"name": &"over_half",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uo2fv")
+}],
+"loop": 0,
+"name": &"under_half",
 "speed": 5.0
 }]
 
 [node name="HUD" type="CanvasLayer" unique_id=1578919809]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=852855449]
-position = Vector2(40, 40)
-scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_w5bra")
+[node name="Border" type="ColorRect" parent="." unique_id=200258637]
+offset_left = 46.0
+offset_top = 46.0
+offset_right = 338.0
+offset_bottom = 130.0
+color = Color(0, 0, 0, 1)
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=1411010707]
-position = Vector2(72, 40)
-scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_w5bra")
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1527180688]
+offset_left = 48.0
+offset_top = 48.0
+offset_right = 336.0
+offset_bottom = 128.0
+color = Color(0.69688606, 0.69688606, 0.696886, 1)
 
-[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="." unique_id=1655307879]
-position = Vector2(104, 40)
+[node name="Heart" type="AnimatedSprite2D" parent="." unique_id=221081296]
+position = Vector2(304, 88)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_lxscs")
+animation = &"full"
+script = ExtResource("2_oo0fn")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=114635024]
+position = Vector2(88, 88)
 scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_w5bra")
+texture = ExtResource("3_5ysmq")
+
+[node name="Money" type="Label" parent="." unique_id=1650621608]
+modulate = Color(0, 0, 0, 1)
+offset_left = 128.0
+offset_top = 72.0
+offset_right = 238.0
+offset_bottom = 100.0
+theme_override_fonts/font = ExtResource("4_6fi6k")
+theme_override_font_sizes/font_size = 32
+text = "Money: 0"
+script = ExtResource("5_uo2fv")

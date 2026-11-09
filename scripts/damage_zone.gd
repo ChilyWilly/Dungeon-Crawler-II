@@ -1,13 +1,9 @@
 extends Area2D
 
 
-signal player_death
-@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-
-
 func _on_body_entered(body: Node2D) -> void:
-	if body is CharacterBody2D:
-		GameManager.player_health -= 50
+	if body is PlayerCharacter:
+		GameManager.player_health -= 10
 		if GameManager.player_health > 0:
 			print(GameManager.player_health)
 		else:

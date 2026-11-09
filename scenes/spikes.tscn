@@ -1,0 +1,153 @@
+[gd_scene format=3 uid="uid://ccot06obufmkp"]
+
+[ext_resource type="PackedScene" uid="uid://bqynobx8uaafs" path="res://scenes/damage_zone.tscn" id="1_xbcdo"]
+[ext_resource type="Texture2D" uid="uid://b3do5jcjsdx0c" path="res://assets/Dungeon Gathering Full Ver. 1.1 With Monsters Expansion/Other Tiles/Set 3.4.png" id="2_bflj7"]
+[ext_resource type="Script" uid="uid://mngynosoqrrd" path="res://scripts/spikes.gd" id="2_kd5gq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kd5gq"]
+atlas = ExtResource("2_bflj7")
+region = Rect2(0, 0, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bflj7"]
+atlas = ExtResource("2_bflj7")
+region = Rect2(0, 24, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vi4p"]
+atlas = ExtResource("2_bflj7")
+region = Rect2(16, 24, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4mxr"]
+atlas = ExtResource("2_bflj7")
+region = Rect2(32, 24, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xa8pu"]
+atlas = ExtResource("2_bflj7")
+region = Rect2(48, 24, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmogx"]
+atlas = ExtResource("2_bflj7")
+region = Rect2(64, 24, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hxik"]
+atlas = ExtResource("2_bflj7")
+region = Rect2(80, 24, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d77p4"]
+atlas = ExtResource("2_bflj7")
+region = Rect2(96, 24, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nyr5e"]
+atlas = ExtResource("2_bflj7")
+region = Rect2(112, 24, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jbb0f"]
+atlas = ExtResource("2_bflj7")
+region = Rect2(128, 24, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6d24"]
+atlas = ExtResource("2_bflj7")
+region = Rect2(144, 24, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_br8oj"]
+atlas = ExtResource("2_bflj7")
+region = Rect2(160, 24, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swvl4"]
+atlas = ExtResource("2_bflj7")
+region = Rect2(176, 24, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xer1y"]
+atlas = ExtResource("2_bflj7")
+region = Rect2(192, 24, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whcm6"]
+atlas = ExtResource("2_bflj7")
+region = Rect2(208, 24, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5lpi"]
+atlas = ExtResource("2_bflj7")
+region = Rect2(224, 24, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ml7e"]
+atlas = ExtResource("2_bflj7")
+region = Rect2(240, 24, 16, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w5bra"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kd5gq")
+}],
+"loop": 0,
+"name": &"off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bflj7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vi4p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4mxr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xa8pu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmogx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3hxik")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d77p4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nyr5e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jbb0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6d24")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_br8oj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swvl4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xer1y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_whcm6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k5lpi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ml7e")
+}],
+"loop": 1,
+"name": &"on",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w5bra"]
+size = Vector2(14, 6)
+
+[node name="Spikes" unique_id=870672627 instance=ExtResource("1_xbcdo")]
+script = ExtResource("2_kd5gq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0" unique_id=2057270779]
+sprite_frames = SubResource("SpriteFrames_w5bra")
+animation = &"on"
+autoplay = "on"
+
+[node name="SpikeCollision" type="CollisionShape2D" parent="." index="1" unique_id=1079460114]
+shape = SubResource("RectangleShape2D_w5bra")
+disabled = true
+debug_color = Color(1, 0, 0, 0.41960785)

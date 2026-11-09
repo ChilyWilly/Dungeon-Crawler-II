@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bqynobx8uaafs" path="res://scenes/damage_zone.tscn" id="1_xepks"]
 [ext_resource type="Texture2D" uid="uid://d23xoqrqpjocy" path="res://assets/Dungeon Gathering Full Ver. 1.1 With Monsters Expansion/DG Monsters Expansion/Zombies Pack/Green Zombie/1Zombie-Idle.png" id="2_httt1"]
 [ext_resource type="Texture2D" uid="uid://cdigqhcyd3a30" path="res://assets/Dungeon Gathering Full Ver. 1.1 With Monsters Expansion/DG Monsters Expansion/Zombies Pack/Shadow.png" id="2_xepks"]
+[ext_resource type="Texture2D" uid="uid://c605pnir1wxod" path="res://assets/Dungeon Gathering Full Ver. 1.1 With Monsters Expansion/DG Monsters Expansion/Zombies Pack/Green Zombie/1Zombie-Run.png" id="4_ycv6i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xepks"]
 atlas = ExtResource("2_httt1")
@@ -36,7 +37,39 @@ region = Rect2(192, 0, 32, 32)
 atlas = ExtResource("2_httt1")
 region = Rect2(224, 0, 32, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_xepks"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_iblsu"]
+atlas = ExtResource("4_ycv6i")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ida1p"]
+atlas = ExtResource("4_ycv6i")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6hpf"]
+atlas = ExtResource("4_ycv6i")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eskk2"]
+atlas = ExtResource("4_ycv6i")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_us5qj"]
+atlas = ExtResource("4_ycv6i")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xtb48"]
+atlas = ExtResource("4_ycv6i")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f78au"]
+atlas = ExtResource("4_ycv6i")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ncdm"]
+atlas = ExtResource("4_ycv6i")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pjjxt"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -66,22 +99,61 @@ animations = [{
 "loop": 1,
 "name": &"idle",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iblsu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ida1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6hpf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eskk2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_us5qj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xtb48")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f78au")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ncdm")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 10.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4gx57"]
-radius = 4.1231055
+[sub_resource type="CircleShape2D" id="CircleShape2D_djxyh"]
+radius = 4.0
 
-[node name="Zombie" unique_id=870672627 instance=ExtResource("1_xepks")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_lxscs"]
+radius = 3.0
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="0" unique_id=120441298]
+[node name="Zombie" type="CharacterBody2D" unique_id=1333522590]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1405921262]
 texture = ExtResource("2_xepks")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1" unique_id=704666681]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1252483232]
 position = Vector2(0, -8)
-sprite_frames = SubResource("SpriteFrames_xepks")
+sprite_frames = SubResource("SpriteFrames_pjjxt")
 animation = &"idle"
 autoplay = "idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2" unique_id=1410213289]
+[node name="DamageZone" parent="." unique_id=870672627 instance=ExtResource("1_xepks")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageZone" unique_id=367310347]
 position = Vector2(0, -4)
-shape = SubResource("CircleShape2D_4gx57")
+shape = SubResource("CircleShape2D_djxyh")
+debug_color = Color(0.9764706, 0, 0, 0.41960785)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=952963538]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_lxscs")

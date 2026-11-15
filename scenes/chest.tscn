@@ -2,6 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://doso6473toxq0" path="res://assets/Dungeon Gathering Full Ver. 1.1 With Monsters Expansion/Chests/All Chest Sheet.png" id="1_oii8l"]
 [ext_resource type="Script" uid="uid://ggpjknn4nfgt" path="res://scripts/chest.gd" id="1_sy5e1"]
+[ext_resource type="PackedScene" uid="uid://c8by3hpav0kiu" path="res://scenes/hud.tscn" id="3_gqd3d"]
+[ext_resource type="FontFile" uid="uid://djo46bdjs60i0" path="res://assets/Dungeon Gathering Full Ver. 1.1 With Monsters Expansion/DU UI-HUD Free Ver_/BoldPixels.ttf" id="4_yue2o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sy5e1"]
 atlas = ExtResource("1_oii8l")
@@ -149,3 +151,21 @@ shape = SubResource("RectangleShape2D_w5bra")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1925416674]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_djxyh")
+
+[node name="HUD" parent="." unique_id=1578919809 instance=ExtResource("3_gqd3d")]
+
+[node name="HUDText" type="Label" parent="HUD" unique_id=576510991]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -291.0
+offset_top = 153.0
+offset_right = 291.0
+offset_bottom = 295.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_yue2o")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1

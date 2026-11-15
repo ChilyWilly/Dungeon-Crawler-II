@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://bmc35cpq4wok4"]
+
+[ext_resource type="Texture2D" uid="uid://cdigqhcyd3a30" path="res://assets/Dungeon Gathering Full Ver. 1.1 With Monsters Expansion/DG Monsters Expansion/Zombies Pack/Shadow.png" id="1_ivqcw"]
+[ext_resource type="Texture2D" uid="uid://bslbb67gy7t2k" path="res://assets/Dungeon Gathering Full Ver. 1.1 With Monsters Expansion/DG Monsters Expansion/Skeletons/1Skeleton-All.png" id="2_bnirc"]
+[ext_resource type="PackedScene" uid="uid://bqynobx8uaafs" path="res://scenes/damage_zone.tscn" id="3_5pgwy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssl1b"]
+atlas = ExtResource("2_bnirc")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4hcs"]
+atlas = ExtResource("2_bnirc")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_haw2w"]
+atlas = ExtResource("2_bnirc")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0f3v"]
+atlas = ExtResource("2_bnirc")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrus2"]
+atlas = ExtResource("2_bnirc")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7e1v2"]
+atlas = ExtResource("2_bnirc")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjsi3"]
+atlas = ExtResource("2_bnirc")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3nhjk"]
+atlas = ExtResource("2_bnirc")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w5bra"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ssl1b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4hcs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_haw2w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0f3v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xrus2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7e1v2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjsi3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3nhjk")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lxscs"]
+radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_djxyh"]
+radius = 3.0
+
+[node name="Skeleton" type="CharacterBody2D" unique_id=1384172114]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=899113506]
+texture = ExtResource("1_ivqcw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1380482163]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_w5bra")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="DamageZone" parent="." unique_id=870672627 instance=ExtResource("3_5pgwy")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageZone" unique_id=1691311388]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_lxscs")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2054767495]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_djxyh")

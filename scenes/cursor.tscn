@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://b7fic2nrscdlk"]
+
+[ext_resource type="Script" uid="uid://c6hbhk24n8bgw" path="res://scripts/cursor.gd" id="1_s0nli"]
+[ext_resource type="Texture2D" uid="uid://dnasnhgckif8t" path="res://assets/Dungeon Gathering Full Ver. 1.1 With Monsters Expansion/DU UI-HUD Free Ver_/Mouse cursors.png" id="2_ndevg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n5qf0"]
+atlas = ExtResource("2_ndevg")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pey64"]
+atlas = ExtResource("2_ndevg")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w5bra"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n5qf0")
+}],
+"loop": 1,
+"name": &"atk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pey64")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Cursor" type="CanvasLayer" unique_id=238890171]
+
+[node name="CursorSprite" type="AnimatedSprite2D" parent="." unique_id=1954886280]
+z_index = 100
+scale = Vector2(1.2, 1.2)
+sprite_frames = SubResource("SpriteFrames_w5bra")
+autoplay = "default"
+script = ExtResource("1_s0nli")

@@ -1,0 +1,115 @@
+[gd_scene format=3 uid="uid://d85ov601ke1t"]
+
+[ext_resource type="Texture2D" uid="uid://l6vhnbxqjiy1" path="res://assets/Dungeon Gathering Full Ver. 1.1 With Monsters Expansion/Doors/Gate sheet all.png" id="1_yk55b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8tsgn"]
+atlas = ExtResource("1_yk55b")
+region = Rect2(80, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yk55b"]
+atlas = ExtResource("1_yk55b")
+region = Rect2(80, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1x16e"]
+atlas = ExtResource("1_yk55b")
+region = Rect2(96, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2j26d"]
+atlas = ExtResource("1_yk55b")
+region = Rect2(112, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ja3w4"]
+atlas = ExtResource("1_yk55b")
+region = Rect2(128, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p641w"]
+atlas = ExtResource("1_yk55b")
+region = Rect2(144, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1c00e"]
+atlas = ExtResource("1_yk55b")
+region = Rect2(160, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5sfgq"]
+atlas = ExtResource("1_yk55b")
+region = Rect2(176, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_80dpb"]
+atlas = ExtResource("1_yk55b")
+region = Rect2(192, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_unro2"]
+atlas = ExtResource("1_yk55b")
+region = Rect2(208, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cm1d"]
+atlas = ExtResource("1_yk55b")
+region = Rect2(224, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvti0"]
+atlas = ExtResource("1_yk55b")
+region = Rect2(240, 32, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w5bra"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8tsgn")
+}],
+"loop": 1,
+"name": &"closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yk55b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1x16e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2j26d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ja3w4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p641w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1c00e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5sfgq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_80dpb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_unro2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5cm1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvti0")
+}],
+"loop": 0,
+"name": &"opening",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w5bra"]
+size = Vector2(16, 16)
+
+[node name="GateDoor" type="StaticBody2D" unique_id=1594134632]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2055597929]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_w5bra")
+animation = &"opening"
+autoplay = "closed"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=416100946]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_w5bra")

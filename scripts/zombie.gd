@@ -1,10 +1,15 @@
-extends Area2D
+extends CharacterBody2D
 
 
-@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+var SPEED = 120.0
 
 
-func _on_body_entered(body: Node2D) -> void:
-	if body is CharacterBody2D:
-		GameManager.player_health -= 50
-		print(GameManager.player_health)
+func _physics_process(delta: float) -> void:
+	movement()
+	
+	
+func movement():
+	pass
+
+
+	move_and_slide()

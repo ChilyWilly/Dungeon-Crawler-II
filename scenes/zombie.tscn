@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b03v3uew472g0"]
 
 [ext_resource type="PackedScene" uid="uid://bqynobx8uaafs" path="res://scenes/damage_zone.tscn" id="1_xepks"]
+[ext_resource type="Script" uid="uid://c6xpyu0asfuf0" path="res://scripts/zombie.gd" id="1_ycv6i"]
 [ext_resource type="Texture2D" uid="uid://d23xoqrqpjocy" path="res://assets/Dungeon Gathering Full Ver. 1.1 With Monsters Expansion/DG Monsters Expansion/Zombies Pack/Green Zombie/1Zombie-Idle.png" id="2_httt1"]
 [ext_resource type="Texture2D" uid="uid://cdigqhcyd3a30" path="res://assets/Dungeon Gathering Full Ver. 1.1 With Monsters Expansion/DG Monsters Expansion/Zombies Pack/Shadow.png" id="2_xepks"]
 [ext_resource type="Texture2D" uid="uid://c605pnir1wxod" path="res://assets/Dungeon Gathering Full Ver. 1.1 With Monsters Expansion/DG Monsters Expansion/Zombies Pack/Green Zombie/1Zombie-Run.png" id="4_ycv6i"]
@@ -137,6 +138,7 @@ radius = 4.0
 radius = 3.0
 
 [node name="Zombie" type="CharacterBody2D" unique_id=1333522590]
+script = ExtResource("1_ycv6i")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1405921262]
 texture = ExtResource("2_xepks")

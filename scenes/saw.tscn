@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://b8wqlmwpbyfkk"]
+
+[ext_resource type="Texture2D" uid="uid://ccf5gpxnmc10r" path="res://assets/Dungeon Gathering Full Ver. 1.1 With Monsters Expansion/Other Tiles/Set 4.9.png" id="1_kprxg"]
+[ext_resource type="PackedScene" uid="uid://bqynobx8uaafs" path="res://scenes/damage_zone.tscn" id="2_846d5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_161w5"]
+atlas = ExtResource("1_kprxg")
+region = Rect2(0, 48, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxxip"]
+atlas = ExtResource("1_kprxg")
+region = Rect2(48, 48, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iw68n"]
+atlas = ExtResource("1_kprxg")
+region = Rect2(96, 48, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_878ni"]
+atlas = ExtResource("1_kprxg")
+region = Rect2(144, 48, 48, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w5bra"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_161w5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxxip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iw68n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_878ni")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w5bra"]
+size = Vector2(18, 6)
+
+[node name="Saw" type="StaticBody2D" unique_id=1057436032]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=853284368]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_w5bra")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=667663400]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_w5bra")
+
+[node name="DamageZone" parent="." unique_id=870672627 instance=ExtResource("2_846d5")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DamageZone" unique_id=110163417]
+polygon = PackedVector2Array(-12, 0, 12, 0, 12, -2, 11, -4, 8, -8, 3, -11, -3, -11, -8, -8, -11, -4, -12, -2)

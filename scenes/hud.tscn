@@ -3,8 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://b5736mm6gyik8" path="res://assets/Dungeon Gathering Full Ver. 1.1 With Monsters Expansion/DU UI-HUD Free Ver_/Hearts Blue.png" id="1_ahhtf"]
 [ext_resource type="Script" uid="uid://b7ml22e5geahh" path="res://scripts/heart.gd" id="2_oo0fn"]
 [ext_resource type="Texture2D" uid="uid://b8qtcpfnyh26r" path="res://assets/Dungeon Gathering Full Ver. 1.1 With Monsters Expansion/DG Asha Character/Blue Asha portrait base.png" id="3_5ysmq"]
+[ext_resource type="Texture2D" uid="uid://deibvm360mct6" path="res://assets/Dungeon Gathering Full Ver. 1.1 With Monsters Expansion/New Items [Update]/16x16 Items Black outline Pack v1.png" id="3_047uy"]
 [ext_resource type="FontFile" uid="uid://djo46bdjs60i0" path="res://assets/Dungeon Gathering Full Ver. 1.1 With Monsters Expansion/DU UI-HUD Free Ver_/BoldPixels.ttf" id="4_6fi6k"]
 [ext_resource type="Script" uid="uid://x1kha37th0vy" path="res://scripts/money.gd" id="5_uo2fv"]
+[ext_resource type="Script" uid="uid://bd7hohr3rnjo4" path="res://scripts/health.gd" id="7_5pdws"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ahhtf"]
 atlas = ExtResource("1_ahhtf")
@@ -69,6 +71,36 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_5pdws"]
+atlas = ExtResource("3_047uy")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w5bra"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5pdws")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_047uy"]
+atlas = ExtResource("3_047uy")
+region = Rect2(16, 80, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_djxyh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_047uy")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="HUD" type="CanvasLayer" unique_id=1578919809]
 
 [node name="Border" type="ColorRect" parent="." unique_id=200258637]
@@ -86,11 +118,21 @@ offset_bottom = 128.0
 color = Color(0.69688606, 0.69688606, 0.696886, 1)
 
 [node name="Heart" type="AnimatedSprite2D" parent="." unique_id=221081296]
-position = Vector2(304, 88)
+position = Vector2(304, 80)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_lxscs")
 animation = &"full"
 script = ExtResource("2_oo0fn")
+
+[node name="Weapon" type="AnimatedSprite2D" parent="." unique_id=486984456]
+position = Vector2(360, 64)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_w5bra")
+
+[node name="Shield" type="AnimatedSprite2D" parent="." unique_id=463709472]
+position = Vector2(360, 112)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_djxyh")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=114635024]
 position = Vector2(88, 88)
@@ -107,3 +149,16 @@ theme_override_fonts/font = ExtResource("4_6fi6k")
 theme_override_font_sizes/font_size = 32
 text = "Money: 0"
 script = ExtResource("5_uo2fv")
+
+[node name="Health" type="Label" parent="." unique_id=992313899]
+offset_left = 278.0
+offset_top = 97.0
+offset_right = 332.0
+offset_bottom = 125.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_6fi6k")
+theme_override_font_sizes/font_size = 32
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("7_5pdws")

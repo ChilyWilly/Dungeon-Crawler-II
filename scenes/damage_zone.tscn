@@ -5,4 +5,9 @@
 [node name="DamageZone" type="Area2D" unique_id=870672627]
 script = ExtResource("1_ppofr")
 
+[node name="PlayerIFrames" type="Timer" parent="." unique_id=1676051252]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="PlayerIFrames" to="." method="_on_player_i_frames_timeout"]

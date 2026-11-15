@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://c13rljpbfw60l"]
+
+[ext_resource type="Texture2D" uid="uid://bjo7lxcwo7xjj" path="res://assets/Dungeon Gathering Full Ver. 1.1 With Monsters Expansion/Other Tiles/Set 2.0.png" id="1_8yyji"]
+[ext_resource type="PackedScene" uid="uid://c8by3hpav0kiu" path="res://scenes/hud.tscn" id="2_ge2pc"]
+[ext_resource type="FontFile" uid="uid://djo46bdjs60i0" path="res://assets/Dungeon Gathering Full Ver. 1.1 With Monsters Expansion/DU UI-HUD Free Ver_/BoldPixels.ttf" id="3_qkam6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pnnkw"]
+atlas = ExtResource("1_8yyji")
+region = Rect2(96, 160, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w5bra"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pnnkw")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w5bra"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_djxyh"]
+size = Vector2(14, 13)
+
+[node name="Sign" type="Area2D" unique_id=660115983]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1761195887]
+sprite_frames = SubResource("SpriteFrames_w5bra")
+frame_progress = 0.15637319
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=374356821]
+shape = SubResource("RectangleShape2D_w5bra")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1195196700]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1973370102]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_djxyh")
+
+[node name="HUD" parent="." unique_id=1578919809 instance=ExtResource("2_ge2pc")]
+
+[node name="HUDText" type="Label" parent="HUD" unique_id=640425102]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -291.0
+offset_top = 153.0
+offset_right = 291.0
+offset_bottom = 295.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_qkam6")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
